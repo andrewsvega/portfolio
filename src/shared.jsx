@@ -56,7 +56,6 @@ export const DATA = {
   disciplines: ["Embedded Systems", "Signal Processing", "ML"],
   summary: "Hardware you can touch, circuits you can build, problems you can't solve by just staring at a screen. A computer engineer drawn to FPGA design, signal processing, and the precision of semiconductor manufacturing.",
   email: "andrewvss2468@gmail.com",
-  phone: "(559) 754-8667",
   linkedin: "linkedin.com/in/andrewvss",
   github: "andrewsvega",
 

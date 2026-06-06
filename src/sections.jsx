@@ -230,7 +230,6 @@ export function Experience() {
 export function Contact() {
   const links = [
     { icon: "mail", label: DATA.email, href: "mailto:" + DATA.email },
-    { icon: "phone", label: DATA.phone, href: "tel:+15597548667" },
     { icon: "linkedin", label: DATA.linkedin, href: "https://" + DATA.linkedin },
     { icon: "github", label: "github.com/" + DATA.github, href: "https://github.com/" + DATA.github },
   ];
