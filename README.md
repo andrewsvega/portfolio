@@ -54,15 +54,32 @@ The repo auto-builds and deploys via GitHub Actions on every push to `main`.
 4. The `Deploy to GitHub Pages` workflow runs; your site goes live at
    `https://andrewsvega.github.io/portfolio/`.
 
-## Custom domain
-Once your domain is registered:
-1. **Settings → Pages → Custom domain** → enter the domain → Save (then check *Enforce HTTPS*).
-2. Add a `public/CNAME` file containing just the domain (e.g. `andrewvega.dev`) and commit it,
-   so every Actions deploy preserves the domain.
-3. At your registrar, point DNS at GitHub Pages:
-   - Apex (`example.com`): four `A` records → `185.199.108.153`, `185.199.109.153`,
-     `185.199.110.153`, `185.199.111.153` (and the matching `AAAA` records if you want IPv6).
-   - `www` subdomain: a `CNAME` record → `andrewsvega.github.io`.
+## Custom domain — andrewvegasanchez.com
+Records below verified against GitHub's official docs.
+
+1. *(Recommended, do first)* Verify the domain: **Settings → Pages → "Verify a domain"**, then
+   add the `TXT` record GitHub gives you. This blocks anyone else from claiming your domain.
+2. **Settings → Pages → Custom domain** → enter `andrewvegasanchez.com` → Save.
+   With the Actions deploy flow this setting is authoritative and persists across deploys;
+   the committed `public/CNAME` file is just a marker (GitHub ignores it when deploying via Actions).
+3. At your registrar, set DNS for the apex `andrewvegasanchez.com`:
+
+   | Type | Name | Value |
+   |---|---|---|
+   | `A` | `@` | `185.199.108.153` |
+   | `A` | `@` | `185.199.109.153` |
+   | `A` | `@` | `185.199.110.153` |
+   | `A` | `@` | `185.199.111.153` |
+   | `AAAA` | `@` | `2606:50c0:8000::153` |
+   | `AAAA` | `@` | `2606:50c0:8001::153` |
+   | `AAAA` | `@` | `2606:50c0:8002::153` |
+   | `AAAA` | `@` | `2606:50c0:8003::153` |
+   | `CNAME` | `www` | `andrewsvega.github.io` |
+
+   Remove any default/parking `A` record the registrar pre-populates. The `www` CNAME lets GitHub
+   auto-redirect `www.andrewvegasanchez.com` ↔ the apex.
+4. DNS can take up to 24h to propagate. Verify with `dig andrewvegasanchez.com +noall +answer -t A`.
+5. Back in **Settings → Pages**, check **Enforce HTTPS** (available within ~24h of the DNS resolving).
 
 ## Notes
 - **NQN logo:** the About card expects `public/assets/nqn-logo.png`. It wasn't in the handoff,
