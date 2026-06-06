@@ -1,0 +1,191 @@
+/* =============================================================
+   Andrew Vega Sanchez — Portfolio Design System
+   colors_and_type.css  ·  foundational tokens + semantic vars
+   ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ---------- Font families ---------- */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;   /* headings, name, big numerals */
+  --font-body:    'IBM Plex Sans', system-ui, sans-serif;   /* paragraphs, UI text */
+  --font-mono:    'IBM Plex Mono', ui-monospace, monospace; /* labels, code, data, tags */
+
+  /* ---------- Backgrounds (dark, blue-tinted) ---------- */
+  --bg-0: #06080B;   /* deepest — page base / void */
+  --bg-1: #0A0E13;   /* primary surface */
+  --bg-2: #10151D;   /* elevated surface / cards */
+  --bg-3: #161D27;   /* raised / hover surface */
+  --bg-inset: #04060A; /* wells, code blocks */
+
+  /* ---------- Borders / hairlines ---------- */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border:        rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.17);
+  --border-accent: rgba(77, 230, 190, 0.45);
+
+  /* ---------- Foreground / text ---------- */
+  --fg-1: #E9EFF6;   /* primary text — soft white */
+  --fg-2: #9DABBC;   /* secondary text */
+  --fg-3: #62707F;   /* muted / captions / disabled */
+  --fg-on-accent: #03110D; /* text on accent fills */
+
+  /* ---------- Accent: SIGNAL (primary) ---------- */
+  --signal:       #4DE6BE;   /* phosphor mint-teal — primary accent */
+  --signal-bright:#7CF5D6;   /* hover / highlight */
+  --signal-dim:   #1F8E78;   /* pressed / muted accent */
+  --signal-deep:  #0E3A33;   /* accent-tinted surface */
+  --signal-glow:  rgba(77, 230, 190, 0.35);
+  --signal-faint: rgba(77, 230, 190, 0.10);
+
+  /* ---------- Accent: AMBER (secondary, used sparingly) ---------- */
+  --amber:      #F4A93C;     /* copper trace / "active" / featured */
+  --amber-dim:  #B97A1F;
+  --amber-glow: rgba(244, 169, 60, 0.30);
+  --amber-faint:rgba(244, 169, 60, 0.10);
+
+  /* ---------- Signal blue (waveform / tertiary data) ---------- */
+  --wave: #5BB8FF;
+  --wave-faint: rgba(91, 184, 255, 0.10);
+
+  /* ---------- Spacing scale (4px base) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ---------- Radii ---------- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+  --radius-pill: 999px;
+
+  /* ---------- Shadows / elevation ---------- */
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-2: 0 8px 24px -8px rgba(0,0,0,0.6);
+  --shadow-3: 0 24px 60px -18px rgba(0,0,0,0.75);
+  --shadow-glow: 0 0 0 1px var(--border-accent), 0 0 32px -4px var(--signal-glow);
+  --shadow-glow-amber: 0 0 0 1px rgba(244,169,60,0.4), 0 0 32px -4px var(--amber-glow);
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);     /* default reveal */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* gentle overshoot */
+  --dur-fast: 140ms;
+  --dur: 280ms;
+  --dur-slow: 600ms;
+
+  /* ---------- Layout ---------- */
+  --content-max: 1160px;
+  --content-pad: clamp(20px, 5vw, 64px);
+
+  /* ---------- Type scale (fluid) ---------- */
+  --fs-display: clamp(2.9rem, 1.6rem + 6vw, 6rem);
+  --fs-h1:      clamp(2.3rem, 1.4rem + 4vw, 4rem);
+  --fs-h2:      clamp(1.8rem, 1.2rem + 2.4vw, 2.75rem);
+  --fs-h3:      clamp(1.3rem, 1.05rem + 1vw, 1.6rem);
+  --fs-lead:    clamp(1.1rem, 1rem + 0.5vw, 1.375rem);
+  --fs-body:    1.0625rem;
+  --fs-sm:      0.9375rem;
+  --fs-mono-label: 0.78rem;
+  --fs-micro:   0.7rem;
+}
+
+/* =============================================================
+   Semantic element styles — apply these classes/vars in markup
+   ============================================================= */
+
+.t-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-label);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+
+.t-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--fg-1);
+}
+
+.t-h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--fg-1);
+}
+
+.t-h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+
+.t-h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--fg-1);
+}
+
+.t-lead {
+  font-family: var(--font-body);
+  font-size: var(--fs-lead);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  color: var(--fg-2);
+}
+
+.t-data {  /* big numerals / metrics */
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--signal);
+  letter-spacing: -0.02em;
+}
+
+code, .code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--signal-bright);
+  background: var(--signal-faint);
+  border: 1px solid var(--border-subtle);
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-xs);
+}

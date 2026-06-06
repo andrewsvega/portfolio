@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+.vite/
+
+# Original pre-Vite handoff (superseded by /src + /public). Kept locally for
+# reference, excluded from the deployed repo. Delete the folder if you don't want it.
+site/
+
+# Vite temp config files
+vite.config.js.timestamp-*
